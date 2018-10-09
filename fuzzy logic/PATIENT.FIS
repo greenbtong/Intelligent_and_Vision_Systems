@@ -1,0 +1,47 @@
+[System]
+Name='PATIENT'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Error'
+Range=[-1 1]
+NumMFs=3
+MF1='N':'gaussmf',[0.35 -1]
+MF2='Z':'gaussmf',[0.25 0]
+MF3='P':'gaussmf',[0.35 1]
+
+[Input2]
+Name='rate'
+Range=[-1 1]
+NumMFs=3
+MF1='N_Rate':'gaussmf',[0.35 -1]
+MF2='Z_Rate':'gaussmf',[0.25 0]
+MF3='P_Rate':'gaussmf',[0.35 1]
+
+[Output1]
+Name='Drug_Input'
+Range=[-1 1]
+NumMFs=3
+MF1='drug_N':'gaussmf',[0.35 -1]
+MF2='drug_Z':'gaussmf',[0.25 0]
+MF3='drug_P':'gaussmf',[0.35 1]
+
+[Rules]
+1 1, 1 (1) : 1
+2 1, 1 (1) : 1
+3 1, 2 (1) : 1
+1 2, 1 (1) : 1
+2 2, 2 (1) : 1
+3 2, 3 (1) : 1
+1 3, 2 (1) : 1
+2 3, 3 (1) : 1
+3 3, 3 (1) : 1

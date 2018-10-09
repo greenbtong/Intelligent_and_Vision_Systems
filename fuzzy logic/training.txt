@@ -1,0 +1,19 @@
+anfisedit
+
+figure(8);
+plotmf(final_fis,'input',1)
+plotmf(final_fis,'input',2)
+gensurf(final_fis)
+showrule(final_fis)
+
+ty = evalfis(trdata1(:,1:2),final_fis);
+cy = evalfis(ckdata1(:,1:2),final_fis);
+
+t_error = ty - trdata1(:,3);
+c_error = cy - ckdata1(:,3); 
+
+Mean_Absolute_Training_Error = mae(t_error)
+Mean_Absolute_Checking_Error = mae(c_error)
+
+plot(tt1, ty, 'g.', t1, dsap1, 'b')
+plot(ct1, cy, 'r.', t1, dsap1, 'b')
